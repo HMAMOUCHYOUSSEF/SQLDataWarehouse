@@ -1,4 +1,3 @@
-
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
 	DECLARE @start DATETIME,@end DATETIME,@b_start DATETIME, @b_end DATETIME;
