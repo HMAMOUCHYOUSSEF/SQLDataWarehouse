@@ -43,7 +43,7 @@ GO
 
 CREATE VIEW gold.dim_products AS
 SELECT 
-	ROW_NUMBER() OVER (ORDER BY prd_id) AS product_key,
+	ROW_NUMBER() OVER (ORDER BY prd_start_dt, prd_id) AS product_key,
 	prd_id AS product_id,
 	cat_id AS catalogue_id,
 	subcat AS subcatalogue,
@@ -65,8 +65,8 @@ GO
 CREATE VIEW gold.fact_sales AS
 SELECT
 	sls_ord_num AS order_number,
-	sls_prd_key AS product_number,
-	sls_cust_id AS customer_id,
+	prd.product_key,
+	customer_key,
 	sls_order_dt AS order_date,
 	sls_ship_dt AS shipping_date,
 	sls_due_dt AS due_date,
